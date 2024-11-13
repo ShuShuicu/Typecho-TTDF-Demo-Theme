@@ -12,24 +12,31 @@ if (!defined("__TYPECHO_ROOT_DIR__")) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"/>
         <meta name="renderer" content="webkit"/>
         <link href="<?php echo Get::Options("faviconUrl") ? Get::Options("faviconUrl") : Get::AssetsUrl() . "/images/favicon.svg"; ?>" rel="icon" />
-        <link rel="stylesheet" href="<?php Get::AssetsUrl(); ?>/style.css?ver=<?php GetTheme::Ver(); ?>">
-        <link rel="stylesheet" href="<?php Get::AssetsUrl(); ?>/nprogress.min.css?ver=<?php GetTheme::Ver(); ?>">
-        <link rel="stylesheet" href="<?php Get::AssetsUrl(); ?>/code/styles/<?php echo $this->options->CodePrettifyCSS; ?>.css?ver=<?php GetTheme::Ver(); ?>">
-        <title><?php $archiveTitle = $this->archiveTitle(
+        <?php 
+        $cssFiles = [
+            'style.css',
+            'nprogress.min.css',
+            'code/BlackMac.css',
+        ];
+        foreach ($cssFiles as $css):
+    ?>
+        <link rel="stylesheet" href="<?php echo GetTheme::AssetsUrl() . "/" . $css; ?>?ver=<?php GetTheme::Ver(); ?>">
+        <?php endforeach; ?>
+        <title><?php $archiveTitle = GetPost::ArchiveTitle(
             [
-                "category" => _t("「%s」分类"),
+                "category" => _t("%s 分类"),
                 "search" => _t("搜索结果"),
-                "tag" => _t("「%s」标签"),
+                "tag" => _t("%s 标签"),
                 "author" => _t("「%s」发布的文章"),
             ],""," - "
         );
         echo $archiveTitle;
-        if ($this->_currentPage > 1) {
-            echo "「第" . $this->_currentPage . "页」 - ";
+        if (Get::Is("index") && !empty(Get::Options("subTitle")) && Get::CurrentPage() > 1) {
+            echo "「第" . Get::CurrentPage() . "页」 - ";
         }
         $title = Get::Options("title");
         echo $title;
-        if ($this->is("index") && !empty(Get::Options("subTitle"))) {
+        if (Get::Is("index") && !empty(Get::Options("subTitle"))) {
             echo " - ";
             $subTitle = Get::Options("subTitle");
             echo $subTitle;
@@ -38,9 +45,8 @@ if (!defined("__TYPECHO_ROOT_DIR__")) {
         <?php $this->header(); ?>
         <!-- Inter web font from bunny.net (GDPR compliant) -->
         <link rel="preconnect" href="https://fonts.bunny.net" />
-        <link href="<?php Get::AssetsUrl(); ?>/css2.css?ver=<?php GetTheme::Ver(); ?>" rel="stylesheet"/>
         <!-- Tailwind CSS Play CDN (mainly for development/testing purposes) -->
-        <script src="<?php Get::AssetsUrl(); ?>/3.4.js?ver=<?php GetTheme::Ver(); ?>"></script>
+        <script src="<?php GetTheme::AssetsUrl(); ?>/3.4.js?ver=<?php GetTheme::Ver(); ?>"></script>
         <!-- Tailwind CSS v3 Configuration -->
         <script>
             const defaultTheme = tailwind.defaultTheme;

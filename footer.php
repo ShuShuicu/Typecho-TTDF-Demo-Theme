@@ -26,13 +26,20 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
       </div> 
     </div>
-    <script src="<?php Get::AssetsUrl(); ?>/nprogress.min.js?ver=<?php GetTheme::Ver(); ?>"></script>
-    <script src="<?php Get::AssetsUrl(); ?>/jquery-3.7.1.min.js?ver=<?php GetTheme::Ver(); ?>"></script>
-    <script src="<?php Get::AssetsUrl(); ?>/jquery.pjax.min.js?ver=<?php GetTheme::Ver(); ?>"></script>
-    <script src="<?php Get::AssetsUrl(); ?>/view-image.min.js?ver=<?php GetTheme::Ver(); ?>"></script>
-    <script src="<?php Get::AssetsUrl(); ?>/code/prism.js?ver=<?php GetTheme::Ver(); ?>" type="module"></script>
-    <script src="<?php Get::AssetsUrl(); ?>/code/clipboard.min.js?ver=<?php GetTheme::Ver(); ?>" type="module"></script>
-    <script src="<?php Get::AssetsUrl(); ?>/pjax.js?ver=<?php GetTheme::Ver(); ?>"></script>
-    <?php $this->footer(); ?>
+    <?php 
+    $jsFiles = [
+      'ttdf.js',
+      'nprogress.min.js',
+      'jquery-3.7.1.min.js',
+      'jquery.pjax.min.js',
+      'view-image.min.js',
+      'code/prism.js',
+      'code/clipboard.min.js',
+      'pjax.js',
+    ];
+    foreach ($jsFiles as $js): ?>
+    <script src="<?php echo GetTheme::AssetsUrl() . "/" . $js; ?>?ver=<?php GetTheme::Ver(); ?>"></script>
+    <?php endforeach; ?>
+    <?php Get::Footer(); ?>
 </body>
 </html>

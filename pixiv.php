@@ -49,7 +49,7 @@ function checkInput() {
         <input type="radio" name="tp" id="type_pic" value="jpg">jpg
         <input type="radio" name="tp" id="type_pic" value="gif">gif
         <hr>
-        <img id="image" src="<?php $this->options->themeUrl('screenshot.png'); ?>" width="500" alt="图片不存在或无法查看图片（确定pid存在且图片格式正确）"/>
+        <img id="image" src="<?php GetTheme::Url('screenshot.png'); ?>" width="500" alt="图片不存在或无法查看图片（确定pid存在且图片格式正确）"/>
         </div>
         </div>
         </div>

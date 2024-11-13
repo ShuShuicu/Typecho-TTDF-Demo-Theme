@@ -13,9 +13,9 @@ Get::Need('header.php');
             <div>
               <h4 class="mb-2 text-lg font-semibold text-indigo-700">
                 <span class="text-sm">
-                    <?php GetPost::Category(); ?>
+                    <?php GetPost::Category(',', true); ?>
                     · 
-                    <?php GetPost::Tags(); ?>
+                    <?php GetPost::Tags(',', true); ?>
                   </span> 
                   <span class="text-sm text-gray-500">
                     · <?php GetPost::Date(); ?>

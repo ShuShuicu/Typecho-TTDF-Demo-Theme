@@ -20,7 +20,7 @@ function themeConfig($form)
     <style>
         body {
             font-weight:500;
-            background: url(<?php echo Get::AssetsUrl() ?>/images/background.webp)
+            background: url(<?php echo GetTheme::AssetsUrl() ?>/images/background.webp)
             no-repeat 0 0;
             background-size: cover;
             background-attachment: fixed;
@@ -42,23 +42,6 @@ function themeConfig($form)
         }  
     </style>
 <?php
-    // 高亮代码
-    $CodePrettifyCSS = new Typecho_Widget_Helper_Form_Element_Select(
-        'CodePrettifyCSS',
-        array(
-            'coy'=> _t('Coy'),
-            'dark'=> _t('Dark'),
-            'GrayMac' => _t('⭐️Mac(灰)⭐️'),
-            'BlackMac'=> _t('⭐️Mac(黑)⭐️'),
-            'WhiteMac'=> _t('⭐️Mac(白)⭐️'),
-            'twilight'=> _t('Twilight'),
-            'tomorrow-night'=> _t('TomorrowNight'),
-        ),
-        'GrayMac',
-        _t('高亮代码'),
-        _t('请选择文章高亮主题风格。')
-    );
-    $form->addInput($CodePrettifyCSS);
     // 副标题
     $subTitle = new Typecho_Widget_Helper_Form_Element_Text(
         'subTitle',

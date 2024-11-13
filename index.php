@@ -4,7 +4,7 @@
  * 基于Typecho Theme Development Framework框架开发。
  * @package TTDF
  * @author 鼠子Tomoriゞ
- * @version 1.0.0
+ * @version 1.0.1
  * @link https://blog.miomoe.cn/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
@@ -18,7 +18,7 @@ Get::Need('header.php');
             <div class="my-2 h-1 rounded bg-indigo-500"></div>
 
             <div class="space-y-6 px-5 py-2 md:col-span-4">
-            <?php while ($this->next()): ?>
+            <?php while (Get::Next()): ?>
             <div>
               
               <h4 class="mb-2 text-lg font-semibold text-indigo-700">
@@ -28,9 +28,9 @@ Get::Need('header.php');
               </h4>
                 <h5 class="mb-1 font-bold">
                   <span class="text-sm">
-                    <?php GetPost::Category(); ?>
+                    <?php GetPost::Category(',', true); ?>
                       · 
-                    <?php GetPost::Tags(); ?>
+                    <?php GetPost::Tags(',', true); ?>
                   </span> 
                   <span class="text-sm text-gray-500">
                     · <?php GetPost::Date(); ?>
@@ -46,9 +46,9 @@ Get::Need('header.php');
             <?php endwhile; ?>
 
             <p style="text-align: center;">
-              <?php $this->pageLink('上一页'); ?>
-                第 <?php echo $this->_currentPage > 1 ? $this->_currentPage : 1; ?> 页 / 共 <?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?> 页
-              <?php $this->pageLink('下一页','next'); ?>
+              <?php Get::PageLink('上一页'); ?>
+                第 <?php echo Get::CurrentPage() > 1 ? Get::CurrentPage() : 1; ?> 页 / 共 <?php echo ceil(Get::Total() / Get::PageSize()); ?> 页
+              <?php Get::PageLink('下一页','next'); ?>
             </p>
             
           </div>
