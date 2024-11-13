@@ -42,7 +42,7 @@ if (!defined("__TYPECHO_ROOT_DIR__")) {
             echo $subTitle;
         }
         ?></title>
-        <?php $this->header(); ?>
+        <?php Get::Header(); ?>
         <!-- Inter web font from bunny.net (GDPR compliant) -->
         <link rel="preconnect" href="https://fonts.bunny.net" />
         <!-- Tailwind CSS Play CDN (mainly for development/testing purposes) -->
